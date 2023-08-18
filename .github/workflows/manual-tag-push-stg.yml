@@ -1,5 +1,5 @@
 ---
-  name: Manual tag push
+  name: Manual tag push (stg)
 
   on:
     workflow_dispatch:

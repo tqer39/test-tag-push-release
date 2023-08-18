@@ -1,5 +1,5 @@
 ---
-  name: Manual tag push
+  name: Manual tag push (prod)
 
   on:
     workflow_dispatch:
@@ -13,7 +13,7 @@
     cancel-in-progress: true
 
   jobs:
-    release-stg:
+    release-prod:
       runs-on: ubuntu-latest
       timeout-minutes: 5
       permissions:
