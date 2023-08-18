@@ -20,14 +20,6 @@
         - name: Checkout
           uses: actions/checkout@v3
 
-        - name: Validate version
-          run: |
-            VERSION="${{ github.event.inputs.version }}"
-            if [[ ! $VERSION =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
-              echo "Invalid version format. Please follow semantic versioning (e.g., 2.71.0)"
-              exit 1
-            fi
-
         - name: Create tag
           run: |
             GIT_TAG="release-v${{ github.event.inputs.version }}"
