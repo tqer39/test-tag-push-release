@@ -1,0 +1,30 @@
+---
+  name: Manual tag push
+
+  on:
+    workflow_dispatch:
+      inputs:
+        version:
+          description: Release version (e.g., 2.71.0) ※vを付けないでください
+          required: true
+
+  concurrency:
+    group: ${{ github.workflow }}-${{ github.ref }}
+    cancel-in-progress: true
+
+  jobs:
+    release-stg:
+      runs-on: ubuntu-latest
+      timeout-minutes: 5
+      permissions:
+        contents: write
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v3
+
+        - name: Create tag
+          run: |
+            GIT_TAG="v${{ github.event.inputs.version }}"
+            BRANCH_NAME=$(git branch --show-current)
+            git tag $GIT_TAG "origin/${BRANCH_NAME}"
+            git push origin $GIT_TAG -f
