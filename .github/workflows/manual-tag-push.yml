@@ -30,8 +30,7 @@
 
         - name: Create tag
           run: |
-            VERSION="${{ github.event.inputs.version }}"
-            GIT_TAG="release-v${VERSION}"
+            GIT_TAG="release-v${{ github.event.inputs.version }}"
             BRANCH_NAME=$("git branch --show-current | sed 's|/|-|g')
             git tag $GIT_TAG "origin/${BRANCH_NAME}"
             git push origin $GIT_TAG -f
