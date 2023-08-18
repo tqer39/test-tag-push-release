@@ -26,5 +26,6 @@
           run: |
             GIT_TAG="release-v${{ github.event.inputs.version }}"
             BRANCH_NAME=$(git branch --show-current)
+            echo "BRANCH_NAME: $BRANCH_NAME"
             git tag $GIT_TAG "origin/${BRANCH_NAME}"
             git push origin $GIT_TAG -f

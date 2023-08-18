@@ -4,7 +4,7 @@ name: tag push release
 on:
   push:
     tags:
-      - "v**"
+      - "v*"
   workflow_dispatch:
 
 jobs:
